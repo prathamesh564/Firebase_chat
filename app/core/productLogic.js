@@ -1,38 +1,31 @@
+"use client";
+import { doc, setDoc, getDocs, collection, query, where, deleteDoc } from "firebase/firestore";
+import { db } from "./firebase";
 
-import {doc,setDoc,getDocs,collection,query,where,deleteDoc, getDoc} from 'firebase/firestore'
-import { db } from './firebase';
-export async function addProduct(product){
-    try{
-        await setDoc(doc(database,"Products",product.id),product);
-    }catch(exception){
-        console.log(JSON.stringify(exception))
-    }
+// Add a new product
+export async function addProduct(product) {
+  try {
+    await setDoc(doc(db, "Products", product.id), product); // use db instead of database
+  } catch (exception) {
+    console.log(JSON.stringify(exception));
+  }
 }
 
-export async function fetchProducts(){
-   
-    const productCollectionRef = collection(db,"Products")
-    
-    const q = query(productCollectionRef);
-
-    const products = await getDocs(q);
-    
-    
-    return products.docs;
+// Fetch all products
+export async function fetchProducts() {
+  const productCollectionRef = collection(db, "Products");
+  const q = query(productCollectionRef);
+  const products = await getDocs(q);
+  return products.docs;
 }
 
-export async function deleteProduct(id,price){
+// Delete product(s) by price
+export async function deleteProduct(id, price) {
+  const productCollectionRef = collection(db, "Products");
+  const q = query(productCollectionRef, where("price", "==", price));
+  const products = await getDocs(q);
 
-
-const productCollectionRef = collection(db,"Products")
-  
-   
-    const q = query(productCollectionRef,where('price','==',price));
-    const products = await getDocs(q);
-    products.forEach(async (product)=> {
-        await deleteDoc(doc(db,"Products",product.id))
-    })
-   
-    
-
-}   
+  products.forEach(async (product) => {
+    await deleteDoc(doc(db, "Products", product.id));
+  });
+}
