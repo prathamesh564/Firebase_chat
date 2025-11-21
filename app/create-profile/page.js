@@ -1,6 +1,7 @@
 "use client"
 import {useState} from 'react'
 import {createProfile,updateUserProfile} from '../core/profileLogic';
+
 export default function ProfilePage(){
   const [name,setName] = useState("");
   const [age,setAge] = useState(10);
