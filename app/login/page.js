@@ -99,8 +99,16 @@ export default function LoginPage() {
   // Note: Sign-up flows send verification email inside handleSignUp above.
 
   return (
-    <div className="bg-yellow-500 min-h-screen w-full flex flex-col items-center justify-center p-4">
-      <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+<div
+  className="min-h-screen w-full flex flex-col items-center justify-center p-4"
+  style={{
+    backgroundImage: "url('https://wallpaperaccess.com/full/156313.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+ <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
         <h2 className="text-xl text-black font-bold mb-4">Auth (Email / Password)</h2>
         <input type="email" placeholder="Email" className="w-full p-3 mb-3 text-black border rounded" value={email} onChange={e => setEmail(e.target.value)} />
         <input type="password" placeholder="Password" className="w-full  p-3 mb-3 text-black border rounded" value={password} onChange={e => setPassword(e.target.value)} />
@@ -156,7 +164,7 @@ console.error("Profile submission failed:", err);
 alert("Error saving profile: " + (err.message || err));
 }
 }}
-className="bg-amber-600 w-[200px] rounded-full p-4 mt-5"  >
+className="bg-amber-600 w-[200px] p-4 mt-5"  >
 Save Profile
 </button>
 

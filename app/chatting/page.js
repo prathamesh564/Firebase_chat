@@ -60,7 +60,15 @@ function Chat() {
   };
 
   return (
-    <div className="min-h-screen bg-black-100 flex justify-center items-center p-4">
+	<div
+  className="min-h-screen w-full flex flex-col items-center justify-center p-4"
+  style={{
+    backgroundImage: "url('https://img.freepik.com/premium-photo/ai-chatbot-background_1279565-15845.jpg?semt=ais_hybrid')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
       <div className="w-full max-w-md bg-gray-200 rounded-xl shadow-lg flex flex-col overflow-hidden">
         <div className="p-4 bg-blue-900 font-serif text-white text-lg font-semibold">
           Chat Room
