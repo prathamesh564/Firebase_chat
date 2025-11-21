@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { deleteProduct, fetchProducts } from "../core/productLogic";
 import { collection, onSnapshot } from "firebase/firestore";
-import { database } from "../core/firebase";
+import { db } from "../core/firebase";
 
 
 export default function Products() {
@@ -11,7 +11,7 @@ export default function Products() {
   useEffect(() => {
     
 
-    const productRef = collection(database, "Products");
+    const productRef = collection(db, "Products");
     const unsubcribe = onSnapshot(productRef, (productSnapshot) => {
       const temp = productSnapshot.docs.map((product) => ({
         ...product.data(),
